@@ -1,23 +1,20 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchData } from '../Redux/Actions'
 import './ShowPage.css'
 
 export const ShowPage = () => {
-    const [data,setData]=useState([])
+ 
     const [page,setpage]=useState(1)
     const [limit,setlimit]=useState(50)
+    const dispatch=useDispatch()
+    const fetch=useSelector((state)=>state.reducer.products)
 
-    const GetData=(limit)=>{
-        axios.get(`https://api.coincap.io/v2/assets`,{
-            params:{
-                limit:limit
-            }
-        })
-        .then((res)=>setData(res.data.data))
-    }
-    console.log(data.length)
+
+    // console.log(data.length)
     const handleAdd=()=>{
-        let lengthpage=data.length/limit
+        // let lengthpage=data.length/limit
         
             setpage(page+1)
             setlimit(limit+50)
@@ -31,9 +28,11 @@ export const ShowPage = () => {
           
     }
 useEffect(()=>{
-    GetData(limit)
-},[limit])
-console.log(data)
+  
+    dispatch(fetchData(limit))
+},[limit,dispatch])
+console.log(fetch)
+
   return (
     <>
     <div className='container'>
@@ -48,7 +47,7 @@ console.log(data)
             <th>volumeUsd24Hr</th>
             <th>changePercent</th>
        </tr>
-     {data.map((el)=>{
+     {fetch.map((el)=>{
         return(
             <tr className='tablerow'>
             <td>{el.rank}</td>
@@ -68,8 +67,8 @@ console.log(data)
 
      
     </div>
-    <div className='mainbutton'><button onClick={handleAdd}>load more</button>
-       <button disabled={page==1} onClick={handleless}>show less</button></div>
+    <div className='mainbutton'><button onClick={handleAdd}>Next Page</button>
+       <button disabled={page==1} onClick={handleless}>Prev Page</button></div>
     </>
 
   )

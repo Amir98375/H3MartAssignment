@@ -10,13 +10,14 @@
 
 }
 .mainbutton{
-    width: 20%;
+   
     margin: auto;
     margin-top: 10px;
+    margin-left: 40%;
 }
 button{
-    background-color: grey;
-    color: blue;
+    background-color:blue;
+    color: white;
     font-size: x-large;
     border-radius: 20px;
     margin-left: 10px;
