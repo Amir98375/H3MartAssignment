@@ -67,8 +67,9 @@ console.log(fetch)
 
      
     </div>
-    <div className='mainbutton'><button onClick={handleAdd}>Next Page</button>
-       <button disabled={page==1} onClick={handleless}>Prev Page</button></div>
+    <div className='mainbutton'><button onClick={handleAdd}>show more</button>
+       {page>1?<button disabled={page==1} onClick={handleless}>show less</button>:""}
+       </div>
     </>
 
   )
