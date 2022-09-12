@@ -15,6 +15,10 @@
     margin-top: 10px;
     margin-left: 40%;
 }
+.tablerow1{
+    background-color: black;
+    color: white;
+}
 button{
     background-color:blue;
     color: white;
@@ -23,13 +27,25 @@ button{
     margin-left: 10px;
     cursor: pointer;
 }
-/* .tablerow1{
 
-    margin-right: 100px;
-} */
 
 .tableclass{
-   width: 100%;
-   border: 1px solid grey;
+   width: 90%;
+
+   margin: auto;
  
+}
+
+.main{
+    height: 70px;
+    width: 100%;
+    background-color:blueviolet;
+    display: flex;
+    justify-content: space-around;
+  
+}
+.axis{
+    justify-items: center;
+    padding-top: 20px;
+    color: white;
 }
